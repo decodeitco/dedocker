@@ -183,6 +183,19 @@ RUN if [ ${INSTALL_IMAP} = true ]; then \
 ;fi
 
 ###########################################################################
+# Subversion:
+###########################################################################
+
+USER root
+
+ARG INSTALL_SUBVERSION=false
+
+RUN if [ ${INSTALL_SUBVERSION} = true ]; then \
+    apt-get install -y subversion \
+;fi
+
+
+###########################################################################
 # xDebug:
 ###########################################################################
 
@@ -654,6 +667,7 @@ USER root
 ARG INSTALL_IMAGEMAGICK=false
 
 RUN if [ ${INSTALL_IMAGEMAGICK} = true ]; then \
+    apt-get update && \
     apt-get install -y --force-yes imagemagick php-imagick \
 ;fi
 
